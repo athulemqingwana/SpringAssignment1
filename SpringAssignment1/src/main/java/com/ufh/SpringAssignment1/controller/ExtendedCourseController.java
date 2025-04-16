@@ -15,7 +15,7 @@ public class ExtendedCourseController {
     private Long idCounter = 1L;
 
     @PostMapping
-    public Course createCourse(@RequestBody Course course) {
+    public Course createCourse(@Valid @RequestBody Course course) {
         course.setId(idCounter++);
         courseMap.put(course.getId(), course);
         return course;
@@ -33,7 +33,7 @@ public class ExtendedCourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Course> updateCourse(@PathVariable Long id, @RequestBody Course updatedCourse) {
+    public ResponseEntity<Course> updateCourse(@PathVariable Long id,@Valid @RequestBody Course updatedCourse) {
         Course course = courseMap.get(id);
         if (course != null) {
             course.setName(updatedCourse.getName());
