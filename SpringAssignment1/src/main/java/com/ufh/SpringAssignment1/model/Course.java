@@ -1,9 +1,25 @@
 package com.ufh.SpringAssignment1.model;
 
+import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNul;
+
 public class Course {
+    @Valid
+    
+    @NotBlank(message = "Id is required")
+    @NotNull(message = "Id is required")
+    @Size(min = 3, max = 13, message = "Course name must be at least 3 numbers")
     private Long id;
+    @NotBlank(message = "Course name is required")
+    @NotNull(message = "Course name is required")
+    @Size(min = 2, message = "Course type must be at least 2 characters")
     private String name;
-    private String type; // e.g., "Foundation", "Undergraduate", "Honours"
+    @NotBlank(message = "Course type is required")
+    @NotNull(message = "Course type is required")
+    @Size(min = 6, message = "Course type must be at least 6 characters")
+    private String type;  // e.g., "Foundation", "Undergraduate", "Honours"
 
     // Constructors
     public Course() {}
