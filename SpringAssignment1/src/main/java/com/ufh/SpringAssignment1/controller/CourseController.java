@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/courses")
 public class CourseController {
 
-    // Static hardcoded courses (Question 1)
     private final List<String> foundationCourses = Arrays.asList(
             "CSC 111F: Introduction to Computers and Computing",
             "CSC 121F: Introduction to Programming Concepts"
@@ -50,7 +49,6 @@ public class CourseController {
         return honoursCourses;
     }
 
-    // NEW: Endpoint to get all the hardcoded (offered) courses
     @GetMapping("/offered")
     public Map<String, List<String>> getOfferedCourses() {
         Map<String, List<String>> groupedCourses = new LinkedHashMap<>();
@@ -63,7 +61,6 @@ public class CourseController {
     }
 
 
-    // CRUD and validation-based data (Question 2)
     private final Map<Long, Course> courseMap = new HashMap<>();
     private Long idCounter = 1L;
 
@@ -127,7 +124,6 @@ public class CourseController {
                 .collect(Collectors.toList());
     }
 
-    // Validation error handler
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
